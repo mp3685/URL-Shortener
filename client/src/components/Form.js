@@ -39,11 +39,13 @@ class Form extends React.Component {
         //If the user has inputted a preferred alias then we use it, if not, we generate one
         //Be sure to change minilinkit.com to your domain
         var generatedKey = nanoid(5);
-        var generatedURL = "minilinkit.com/" + generatedKey;
+        //var generatedURL = "minilinkit.com/" + generatedKey;
+        var generatedURL = "https://url-shortener-191i.onrender.com/" + generatedKey;
 
         if (this.state.preferredAlias !== "") {
             generatedKey = this.state.preferredAlias;
-            generatedURL = "minilinkit.com/" + this.state.preferredAlias;
+            //generatedURL = "minilinkit.com/" + this.state.preferredAlias;
+            generatedURL = "https://url-shortener-191i.onrender.com/" + this.state.preferredAlias;
         }
 
         const db = getDatabase();
@@ -130,7 +132,7 @@ class Form extends React.Component {
     }
 
     copyToClipboard = () => {
-        navigator.clipboard.writeText(this.state.generateURL)
+        navigator.clipboard.writeText(this.state.generatedURL);
         this.setState({
             toolTipMessage: "Copied!",
         })
@@ -140,7 +142,8 @@ class Form extends React.Component {
         return (
             <div className="container">
                 <form autoComplete="off">
-                    <h3>Mini Link It!</h3>
+                    {/* <h3>Mini Link It!</h3> */}
+                    <h3>URL Shortener!</h3>
 
                     <div className="form-group">
                         <label>Enter Your Long URL</label>
@@ -167,10 +170,12 @@ class Form extends React.Component {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="basic-url">Your Mini URL</label>
+                        {/* <label htmlFor="basic-url">Your Mini URL</label> */}
+                        <label htmlFor="basic-url">Your Shortened URL</label>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text">minilinkit.com/</span>
+                                {/* <span className="input-group-text">minilinkit.com/</span> */}
+                                <span className="input-group-text">https://url-shortener-191i.onrender.com/</span>
                             </div>
                             <input
                                 id="preferredAlias"
@@ -201,7 +206,8 @@ class Form extends React.Component {
                                 </div> :
                                 <div>
                                     <span className="visually-hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                    <span>Mini Link It</span>
+                                    {/* <span>Mini Link It</span> */}
+                                    <span>URL Shortener</span>
                                 </div>
                         }
 
